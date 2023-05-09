@@ -3,7 +3,7 @@
 ## Table of contents
 
 - [Overview](#overview)
-- [Usage](#the-challenge)
+- [Usage](#usage)
 - [Built with](#built-with)
 - [Author](#author)
 - [Getting Started with npm](#getting-started-with-npm)
