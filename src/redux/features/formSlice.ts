@@ -2,11 +2,11 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface FormInputs {
   [key: string]: string | number
-  name: string
+  type: string
 }
 
 const initialState: FormInputs = {
-  name: '',
+  type: '',
 }
 
 export const formSlice = createSlice({

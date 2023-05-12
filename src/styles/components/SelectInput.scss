@@ -28,19 +28,20 @@
       top: 110%;
       left: 0;
       width: 100%;
-      padding: 0.5rem 0;
+      padding: 0.5rem;
       background-color: var(--clr-white);
       border-radius: var(--radius);
       box-shadow: var(--light-shadow);
       z-index: 1;
 
       .option {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.5rem;
         cursor: pointer;
         transition: var(--transition);
+        border-radius: var(--radius);
 
         &:hover {
-          background-color: var(--clr-grey-9);
+          background-color: var(--clr-blue-light);
         }
       }
     }
