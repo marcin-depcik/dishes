@@ -1,0 +1,128 @@
+.form-card {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1.75rem;
+  background-color: var(--clr-white);
+  box-shadow: var(--light-shadow);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 400px;
+
+  @media screen and (min-height: 700px) {
+    min-height: 600px;
+  }
+
+  &.succeed-card {
+    justify-content: center;
+  }
+
+  h1,
+  h3 {
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    margin: 1rem auto;
+    width: 100px;
+  }
+
+  &_btn {
+    font-size: 1.25rem;
+    letter-spacing: var(--spacing);
+    padding: 1rem;
+    font-family: var(--ff-secondary);
+    border-radius: 999px;
+    border: 2px solid var(--clr-white);
+    background-color: var(--clr-blue-dark);
+    color: var(--clr-white);
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: var(--transition);
+    margin: 1rem auto 0;
+    letter-spacing: 2px;
+
+    &:hover {
+      background-color: var(--clr-white);
+      color: var(--clr-blue-dark);
+      border: 3px solid var(--clr-blue-dark);
+    }
+  }
+
+  &_inputs {
+    label {
+      color: var(--clr-grey-6);
+      font-weight: 500;
+    }
+
+    .error {
+      position: absolute;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem;
+      color: var(--clr-red-dark);
+      transition: var(--transition);
+      width: 100%;
+      bottom: 0;
+    }
+
+    .text-input,
+    .time-input,
+    .select-input,
+    .option-input {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      .slider {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+        height: 6px;
+        color: var(--clr-blue-dark);
+        width: 95%;
+
+        .MuiSlider-markLabel {
+          color: var(--clr-blue-dark);
+        }
+      }
+    }
+
+    input {
+      height: 60px;
+      font-size: 1rem;
+      padding: 1rem;
+      margin: 0.5rem 0 1.5rem 0;
+      border-radius: var(--radius);
+      border: 2px solid var(--clr-grey-6);
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        opacity: 1;
+        color: var(--clr-grey-6);
+      }
+
+      &[type='time'] {
+        font-family: var(--ff-primary);
+        color: var(--clr-grey-6);
+        cursor: pointer;
+        transition: var(--transition);
+
+        &:focus {
+          color: var(--clr-grey-1);
+        }
+      }
+
+      &[data-focus='true'] {
+        border: 2px solid var(--clr-red-dark);
+        background-color: var(--clr-red-light);
+      }
+    }
+  }
+}

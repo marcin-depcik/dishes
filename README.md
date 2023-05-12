@@ -26,7 +26,8 @@ Users should be able to:
 - TypeScript
 - React
 - React hooks
-- Redux
+- Redux Toolkit
+- Redux Form
 
 ## Author
 
@@ -39,7 +40,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-Runs local installation of packages from package.json\
+Runs local installation of packages from package.json
 
 ### `npm run dev`
 
