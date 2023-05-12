@@ -19,7 +19,7 @@ export const OptionInput = () => {
           <Field
             name="diameter"
             component={NumberInput}
-            label="*Set diameter of pizza"
+            label="*Set pizza size (cm)"
             min={0.1}
             step={0.1}
             float

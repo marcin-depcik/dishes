@@ -1,6 +1,4 @@
 import axios from 'axios'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
 import { TextInput } from '@/components/Inputs/TextInput'
 import { TimeInput } from '@/components/Inputs/TimeInput'
 import { SelectInput } from '@/components/Inputs/SelectInput'
@@ -20,10 +18,10 @@ export interface FormValues {
   name: string
   preparation_time: string
   type: string
-  no_of_slices: number
-  diameter: number
-  slices_of_bread: number
-  spiciness_scale: number
+  no_of_slices?: number
+  diameter?: number
+  slices_of_bread?: number
+  spiciness_scale?: number
 }
 
 const API_URL = 'https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/'
@@ -32,11 +30,9 @@ const FormCard = ({
   handleSubmit,
   submitSucceeded,
 }: InjectedFormProps<FormValues, unknown, string>) => {
-  const inputs = useSelector((state: RootState) => state.formReducer)
-
-  const submit = async () => {
+  const submit = async (data: FormValues) => {
     try {
-      await axios.post(API_URL, inputs, {
+      await axios.post(API_URL, data, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -54,31 +50,31 @@ const FormCard = ({
       <div className="form-card_main">
         {submitSucceeded ? (
           <>
-            <h1>Submit succeeded!</h1>
+            <h1>Successfully submitted!</h1>
             <h3>Thank you for your time.</h3>
             <img src={FormCardImage} alt="Woman with form card" />
           </>
         ) : (
           <>
-            <h2>Select your dish!</h2>
-            <p>Please fill all *required fields and submit the form.</p>
+            <h2>Compose your dish!</h2>
+            <p>Please fill all required fields and submit the form.</p>
             <div className="form-card_inputs">
               <Field
                 name="name"
                 component={TextInput}
                 placeholder="Type meal name..."
-                label="*Enter name of the dish"
+                label="*Name your dish"
               />
               <Field
                 name="preparation_time"
                 component={TimeInput}
-                label="*Enter preparation time"
+                label="*Set preparation time"
               />
               <Field
                 name="type"
                 component={SelectInput}
                 placeholder="Select type"
-                label="*Select type of the dish"
+                label="*Select dish type"
               />
               <OptionInput />
             </div>
@@ -94,5 +90,6 @@ const FormCard = ({
 
 export const ReduxFormCard = reduxForm({
   form: 'formCard',
+  destroyOnUnmount: false,
   validate,
 })(FormCard)

@@ -1,6 +1,5 @@
 .form-card {
-  width: 100%;
-  min-height: 100vh;
+  width: 100vw;
   padding: 1.75rem;
   background-color: var(--clr-white);
   box-shadow: var(--light-shadow);
@@ -8,14 +7,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 400px;
 
-  @media screen and (min-height: 700px) {
-    min-height: 600px;
+  @media screen and (min-width: 400px) {
+    max-width: 400px;
   }
 
   &.succeed-card {
     justify-content: center;
+
+    @media screen and (min-width: 400px) {
+      max-width: 500px;
+    }
   }
 
   h1,
@@ -80,7 +82,7 @@
       .slider {
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 1.5rem;
+        margin-bottom: 3rem;
         height: 6px;
         color: var(--clr-blue-dark);
         width: 95%;

@@ -1,5 +1,3 @@
-import { setInput } from '@/redux/features/formSlice'
-import { useDispatch } from 'react-redux'
 import { WrappedFieldProps } from 'redux-form'
 import { ErrorMsg } from '../Common/ErrorMsg'
 
@@ -20,19 +18,11 @@ export const NumberInput = ({
   meta,
   input: { name, value, onChange, onBlur },
 }: PropsType) => {
-  const dispatch = useDispatch()
-
   const error = Boolean(meta.touched && meta.error)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    dispatch(
-      setInput({
-        name,
-        value: float ? parseFloat(value) : parseInt(value, 10),
-      })
-    )
-    onChange(value)
+    const { value } = e.target
+    onChange(float ? parseFloat(value) : parseInt(value, 10))
   }
 
   return (

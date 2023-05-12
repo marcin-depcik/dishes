@@ -1,6 +1,4 @@
-import { setInput } from '@/redux/features/formSlice'
 import { Slider } from '@mui/material'
-import { useDispatch } from 'react-redux'
 import { PropsType } from './TextInput'
 import { ErrorMsg } from '../Common/ErrorMsg'
 
@@ -9,8 +7,6 @@ export const SliderInput = ({
   meta,
   input: { value, onChange, ...input },
 }: PropsType) => {
-  const dispatch = useDispatch()
-
   const error = Boolean(meta.touched && meta.error)
 
   const marks = () => {
@@ -25,14 +21,8 @@ export const SliderInput = ({
   }
 
   const handleChange = (e: any) => {
-    const { name, value } = e.target
-    onChange(value)
-    dispatch(
-      setInput({
-        name,
-        value: parseInt(value, 10),
-      })
-    )
+    const { value } = e.target
+    onChange(parseInt(value, 10))
   }
 
   return (
@@ -45,7 +35,8 @@ export const SliderInput = ({
         step={1}
         name={input.name}
         className="slider"
-        value={parseInt(value, 10) || 5}
+        value={value || 0}
+        defaultValue={0}
         valueLabelDisplay="auto"
         onChange={handleChange}
       />

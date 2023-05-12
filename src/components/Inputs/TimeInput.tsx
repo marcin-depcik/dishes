@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux'
-import { setInput } from '@/redux/features/formSlice'
 import { ErrorMsg } from '@/components/Common/ErrorMsg'
 import { PropsType } from './TextInput'
 
@@ -8,13 +6,10 @@ export const TimeInput = ({
   meta,
   input: { name, value, onChange, onBlur },
 }: PropsType) => {
-  const dispatch = useDispatch()
-
   const error = Boolean(meta.touched && meta.error)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    dispatch(setInput({ name, value }))
+    const { value } = e.target
     onChange(value)
   }
 
