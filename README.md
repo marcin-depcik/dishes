@@ -21,6 +21,8 @@ Users should be able to:
 
 ## Built with
 
+- `Node v18.15.0`
+- `npm v9.5.0`
 - Semantic HTML5 markup
 - CSS/SASS
 - TypeScript
@@ -35,9 +37,6 @@ Users should be able to:
 - GitHub - [marcin-depcik](https://github.com/marcin-depcik)
 
 ## Getting Started with npm
-Ŕ
-- `Node v18.15.0`
-- `npm v9.5.0`
 
 In the project directory, you can run:
 
