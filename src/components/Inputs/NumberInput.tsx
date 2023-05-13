@@ -1,5 +1,6 @@
 import { WrappedFieldProps } from 'redux-form'
 import { ErrorMsg } from '../Common/ErrorMsg'
+import { useState } from 'react'
 
 interface PropsType extends WrappedFieldProps {
   label: string
@@ -16,13 +17,15 @@ export const NumberInput = ({
   float,
   type = 'number',
   meta,
-  input: { name, value, onChange, onBlur },
+  input: { name, value, onChange },
 }: PropsType) => {
-  const error = Boolean(meta.touched && meta.error)
+  const [valid, setValid] = useState(true)
+  const error = Boolean((!valid || meta.touched) && meta.error)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
     onChange(float ? parseFloat(value) : parseInt(value, 10))
+    !value && setValid(false)
   }
 
   return (
@@ -37,7 +40,6 @@ export const NumberInput = ({
         data-focus={error}
         placeholder="Type number..."
         value={value || ''}
-        onBlur={onBlur}
         onChange={handleChange}
       />
       {error && <ErrorMsg msg={meta.error} />}

@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { ErrorMsg } from '@/components/Common/ErrorMsg'
 import { PropsType } from './TextInput'
+import { change, untouch } from 'redux-form'
+import { INPUTS } from '@/enums/formInputs'
 
 import '@/styles/components/SelectInput.scss'
 
@@ -44,7 +46,21 @@ export const SelectInput = ({
     }
   }
 
+  const resetInputs = () => {
+    const fields = [
+      INPUTS.NO_OF_SLICES,
+      INPUTS.DIAMETER,
+      INPUTS.SPICINESS_SCALE,
+      INPUTS.SLICES_OF_BREAD,
+    ]
+    fields.forEach((field) => {
+      dispatch(change('formCard', field, ''))
+      dispatch(untouch('formCard', field))
+    })
+  }
+
   const handleSelect = (option: Option) => {
+    resetInputs()
     dispatch(setInput({ name, value: option.type }))
     setSelected(option.text)
     onChange(option.type)

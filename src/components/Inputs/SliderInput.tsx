@@ -1,6 +1,7 @@
 import { Slider } from '@mui/material'
 import { PropsType } from './TextInput'
 import { ErrorMsg } from '../Common/ErrorMsg'
+import { useEffect } from 'react'
 
 export const SliderInput = ({
   label,
@@ -25,6 +26,10 @@ export const SliderInput = ({
     onChange(parseInt(value, 10))
   }
 
+  useEffect(() => {
+    onChange(5)
+  }, [])
+
   return (
     <div className="option-input">
       <label>{label}</label>
@@ -35,8 +40,7 @@ export const SliderInput = ({
         step={1}
         name={input.name}
         className="slider"
-        value={value || 0}
-        defaultValue={0}
+        value={value || 5}
         valueLabelDisplay="auto"
         onChange={handleChange}
       />

@@ -1,5 +1,6 @@
 .form-card {
   width: 100vw;
+  min-height: 100vh;
   padding: 1.75rem;
   background-color: var(--clr-white);
   box-shadow: var(--light-shadow);
@@ -8,15 +9,17 @@
   flex-direction: column;
   justify-content: space-between;
 
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 450px) {
     max-width: 400px;
+    min-height: auto;
   }
 
   &.succeed-card {
     justify-content: center;
 
-    @media screen and (min-width: 400px) {
+    @media screen and (min-width: 450px) {
       max-width: 500px;
+      min-height: auto;
     }
   }
 

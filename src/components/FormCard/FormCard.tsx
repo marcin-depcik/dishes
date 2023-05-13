@@ -5,6 +5,7 @@ import { SelectInput } from '@/components/Inputs/SelectInput'
 import { OptionInput } from '@/components/Inputs/OptionInput'
 import { validate } from '@/utils/validate'
 import FormCardImage from '@/assets/images/form-card-image.svg'
+import { INPUTS } from '@/enums/formInputs'
 import {
   Field,
   InjectedFormProps,
@@ -60,18 +61,18 @@ const FormCard = ({
             <p>Please fill all required fields and submit the form.</p>
             <div className="form-card_inputs">
               <Field
-                name="name"
+                name={INPUTS.NAME}
                 component={TextInput}
                 placeholder="Type meal name..."
                 label="*Name your dish"
               />
               <Field
-                name="preparation_time"
+                name={INPUTS.PREP_TIME}
                 component={TimeInput}
                 label="*Set preparation time"
               />
               <Field
-                name="type"
+                name={INPUTS.TYPE}
                 component={SelectInput}
                 placeholder="Select type"
                 label="*Select dish type"
@@ -90,6 +91,5 @@ const FormCard = ({
 
 export const ReduxFormCard = reduxForm({
   form: 'formCard',
-  destroyOnUnmount: false,
   validate,
 })(FormCard)
